@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,8 +20,11 @@ public class MainActivity extends AppCompatActivity {
     boolean []solved=new boolean[6];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final TextView vic = (TextView) findViewById(R.id.Victoria);
+        vic.setVisibility(View.INVISIBLE);
         final ImageView ap=findViewById(R.id.imageViewAp);
         final ImageView app=findViewById(R.id.imageViewApp);
         final ImageView an=findViewById(R.id.imageViewAm);
@@ -28,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         final ImageView sy=findViewById(R.id.imageViewSy);
         final ImageView sym=findViewById(R.id.imageViewSym);
 
-        ImageView clock = (ImageView) findViewById(R.id.imageView2);
+        ImageView clock = (ImageView) findViewById(R.id.imageView);
         clock.setBackgroundResource(R.drawable.clock);
         clockani = (AnimationDrawable) clock.getBackground();
 
@@ -48,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                     punts++;
                     solved[0]=true;
                     solved[1]=true;
+                    app.setVisibility(View.INVISIBLE);
+                    ap.setVisibility(View.INVISIBLE);
                     solucionat(punts);
                 }else if(estat==0){
                     clockani.start();
@@ -70,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
                     punts=punts+1;
                     solved[0]=true;
                     solved[1]=true;
+                    app.setVisibility(View.INVISIBLE);
+                    ap.setVisibility(View.INVISIBLE);
                     solucionat(punts);
                 }else if(estat==0){
                     clockani.start();
@@ -92,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
                     punts++;
                     solved[2]=true;
                     solved[3]=true;
+                    an.setVisibility(View.INVISIBLE);
+                    and.setVisibility(View.INVISIBLE);
                     solucionat(punts);
                 }else if(estat==0){
                     clockani.start();
@@ -114,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
                     punts++;
                     solved[2]=true;
                     solved[3]=true;
+                    an.setVisibility(View.INVISIBLE);
+                    and.setVisibility(View.INVISIBLE);
                     solucionat(punts);
                 }else if(estat==0){
                     clockani.start();
@@ -136,6 +148,8 @@ public class MainActivity extends AppCompatActivity {
                     punts++;
                     solved[4]=true;
                     solved[5]=true;
+                    sy.setVisibility(View.INVISIBLE);
+                    sym.setVisibility(View.INVISIBLE);
                     solucionat(punts);
                 }else if(estat==0){
                     clockani.start();
@@ -158,6 +172,8 @@ public class MainActivity extends AppCompatActivity {
                     punts++;
                     solved[4]=true;
                     solved[5]=true;
+                    sy.setVisibility(View.INVISIBLE);
+                    sym.setVisibility(View.INVISIBLE);
                     solucionat(punts);
                 }else if(estat==0){
                     clockani.start();
@@ -195,7 +211,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void solucionat(int punts){
         if(punts==3){
-            ImageView spaceshipImage = (ImageView) findViewById(R.id.imageViewAnd);
+            TextView spaceshipImage = (TextView) findViewById(R.id.Victoria);
+            spaceshipImage.setVisibility(View.VISIBLE);
             Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.hyperspace_jump);
             spaceshipImage.startAnimation(hyperspaceJumpAnimation);
 
